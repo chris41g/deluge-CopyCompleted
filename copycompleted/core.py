@@ -113,6 +113,8 @@ class Core(CorePluginBase):
         if label != "seed":
             log.info("COPYCOMPLETED PLUGIN NOT COPYING %s BECAUSE IT HAS NO LABEL", info["name"])
             return
+        if label == "seed":
+            log.info("COPYCOMPLETED PLUGIN COPYING %s BECAUSE IT HAS SEED LABEL", info["name"])
         old_path = info["move_on_completed_path"] if info["move_on_completed"] else info["save_path"]
         new_path = self.config["copy_to"]  + "/" + label if self.config["append_label_todir"] else self.config["copy_to"]
         log.info("COPYCOMPLETED: New Path is: %s", new_path)
